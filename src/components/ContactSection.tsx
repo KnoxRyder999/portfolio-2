@@ -7,8 +7,10 @@ import * as LucideIcons from 'lucide-react';
 
 // Dynamic icon component resolver using ES modules
 const getIconComponent = (iconName: string) => {
-  // Access the icon from the imported LucideIcons object
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<any>>)[iconName];
+  // Access the icon dynamically from the imported LucideIcons object
+  // First cast to unknown, then to the Record type to satisfy TypeScript
+  const icons = LucideIcons as unknown as Record<string, React.ComponentType<any>>;
+  const IconComponent = icons[iconName];
   return IconComponent ? <IconComponent size={28} className="mb-4 text-blue-400" /> : null;
 };
 
