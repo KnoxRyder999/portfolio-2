@@ -17,11 +17,11 @@ const Index = () => {
     // Set meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Full Stack Developer Portfolio - Turning your ideas into seamless digital experiences');
+      metaDescription.setAttribute('content', 'Artem Surovihin - Full Stack Developer Portfolio - Turning your ideas into seamless digital experiences');
     }
 
     // Set page title
-    document.title = 'Aayush Bharti - Full Stack Developer';
+    document.title = 'Artem Surovihin - Full Stack Developer';
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -39,13 +39,22 @@ const Index = () => {
         }
       });
     });
+    
+    // Add scroll listener for enhanced animations
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      document.body.style.setProperty('--scroll', String(scrollPosition));
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="bg-black text-white min-h-screen">
       <Navbar />
       <HeroSection />
-      <FeaturesSection />
+      {/* Remove FeaturesSection as requested */}
       <ProjectsSection />
       <SkillsSection />
       <AboutSection />
