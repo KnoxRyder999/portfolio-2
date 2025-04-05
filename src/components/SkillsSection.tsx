@@ -165,7 +165,7 @@ const SkillsSection = () => {
               Google Cloud Certified – Associate Cloud Engineer
             </motion.span>
             <motion.span 
-              whileHover={{ scale: a1.03, boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)' }}
+              whileHover={{ scale: 1.03, boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)' }}
               className="px-5 py-3 bg-gray-800/50 rounded-full border border-gray-700 text-sm shadow-lg"
             >
               Ethereum Blockchain Developer Certification
