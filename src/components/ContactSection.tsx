@@ -1,6 +1,16 @@
 
-import { ArrowRight, Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { contactInfo } from '@/constants/portfolioData';
+import BackgroundAnimation from './BackgroundAnimation';
+
+// Dynamic icon import
+const getIconComponent = (iconName: string) => {
+  // Dynamically import from lucide-react
+  const icons = require('lucide-react');
+  const IconComponent = icons[iconName];
+  return IconComponent ? <IconComponent size={28} className="mb-4 text-blue-400" /> : null;
+};
 
 const ContactSection = () => {
   return (
@@ -14,6 +24,9 @@ const ContactSection = () => {
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-black/90 to-purple-900/40 backdrop-blur-sm"></div>
+      
+      {/* Three.js background animation (with less particles for subtlety) */}
+      <BackgroundAnimation color="#3b82f6" particleCount={600} speed={0.0002} />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -42,41 +55,17 @@ const ContactSection = () => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20 w-full max-w-5xl">
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl shadow-purple-900/10"
-            >
-              <Phone size={28} className="mb-4 text-blue-400" />
-              <h4 className="font-medium text-lg mb-3">Phone</h4>
-              <p className="text-gray-300">+380963598237</p>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl shadow-purple-900/10"
-            >
-              <Mail size={28} className="mb-4 text-blue-400" />
-              <h4 className="font-medium text-lg mb-3">Email</h4>
-              <p className="text-gray-300">suroviahinartem@gmail.com</p>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl shadow-purple-900/10"
-            >
-              <MapPin size={28} className="mb-4 text-blue-400" />
-              <h4 className="font-medium text-lg mb-3">Location</h4>
-              <p className="text-gray-300">Kyiv City, Ukraine</p>
-            </motion.div>
-            
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl shadow-purple-900/10"
-            >
-              <Calendar size={28} className="mb-4 text-blue-400" />
-              <h4 className="font-medium text-lg mb-3">Availability</h4>
-              <p className="text-gray-300">Ready for new projects</p>
-            </motion.div>
+            {contactInfo.map((item, index) => (
+              <motion.div 
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl shadow-purple-900/10"
+              >
+                {getIconComponent(item.icon)}
+                <h4 className="font-medium text-lg mb-3">{item.title}</h4>
+                <p className="text-gray-300">{item.value}</p>
+              </motion.div>
+            ))}
           </div>
 
           <div className="mt-16">

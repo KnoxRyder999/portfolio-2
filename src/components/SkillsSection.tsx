@@ -1,71 +1,20 @@
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Server, Database, Settings, Layout, Coins } from 'lucide-react';
+import { skillCategories } from '@/constants/portfolioData';
+import BackgroundAnimation from './BackgroundAnimation';
 
-const skillCategories = [
-  {
-    name: 'Frontend',
-    icon: <Layout className="w-6 h-6" />,
-    skills: [
-      { name: 'React', icon: '⚛️' },
-      { name: 'Vue', icon: '🖖' },
-      { name: 'Next.js', icon: '▲' },
-      { name: 'Angular', icon: '🅰️' },
-      { name: 'TailwindCSS', icon: '🌊' },
-      { name: 'TypeScript', icon: '📝' },
-    ]
-  },
-  {
-    name: 'Backend',
-    icon: <Server className="w-6 h-6" />,
-    skills: [
-      { name: 'Node.js', icon: '🟢' },
-      { name: 'NestJS', icon: '🐈' },
-      { name: 'Django', icon: '🐍' },
-      { name: 'PHP', icon: '🐘' },
-      { name: 'Laravel', icon: '🔺' },
-      { name: 'ASP.NET', icon: '🌐' },
-    ]
-  },
-  {
-    name: 'Blockchain',
-    icon: <Coins className="w-6 h-6" />,
-    skills: [
-      { name: 'Ethereum', icon: '⟠' },
-      { name: 'Solana', icon: '☀️' },
-      { name: 'TON', icon: '💎' },
-      { name: 'Tron', icon: '♦️' },
-      { name: 'Smart Contract', icon: '📜' },
-      { name: 'Web3.js', icon: '🔌' },
-      { name: 'Ethers.js', icon: '🔄' },
-    ]
-  },
-  {
-    name: 'Database',
-    icon: <Database className="w-6 h-6" />,
-    skills: [
-      { name: 'MongoDB', icon: '🍃' },
-      { name: 'PostgreSQL', icon: '🐘' },
-      { name: 'MySQL', icon: '🐬' },
-      { name: 'Firebase', icon: '🔥' },
-    ]
-  },
-  {
-    name: 'DevOps & Tools',
-    icon: <Settings className="w-6 h-6" />,
-    skills: [
-      { name: 'Docker', icon: '🐳' },
-      { name: 'Kubernetes', icon: '☸️' },
-      { name: 'Kafka', icon: '📊' },
-      { name: 'CI/CD', icon: '🔄' },
-      { name: 'AWS', icon: '☁️' },
-      { name: 'Google Cloud', icon: '☁️' },
-      { name: 'Redis', icon: '🔻' },
-      { name: 'Linux', icon: '🐧' },
-    ]
-  },
-];
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+    case 'Layout': return <Layout className="w-6 h-6" />;
+    case 'Server': return <Server className="w-6 h-6" />;
+    case 'Database': return <Database className="w-6 h-6" />;
+    case 'Settings': return <Settings className="w-6 h-6" />;
+    case 'Coins': return <Coins className="w-6 h-6" />;
+    default: return <Code2 className="w-6 h-6" />;
+  }
+};
 
 const SkillsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -76,14 +25,8 @@ const SkillsSection = () => {
       ref={sectionRef}
       className="relative bg-gradient-to-b from-black to-[#07071c] py-28 lg:py-40 overflow-hidden"
     >
-      <motion.div 
-        className="absolute inset-0 opacity-30"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 2 }}
-      >
-        <div className="code-rain"></div>
-      </motion.div>
+      {/* Three.js background animation */}
+      <BackgroundAnimation color="#0070f3" particleCount={1200} speed={0.0008} />
       
       <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
         <div className="flex flex-col items-center mb-20">
@@ -119,7 +62,7 @@ const SkillsSection = () => {
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-lg shadow-purple-900/20">
-                  {category.icon}
+                  {getIconComponent(category.icon)}
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
                   {category.name}

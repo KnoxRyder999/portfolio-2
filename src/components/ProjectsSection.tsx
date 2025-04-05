@@ -2,49 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-
-// Project data
-const projects = [
-  {
-    id: 1,
-    title: 'Next Ventures',
-    description: 'A online space for entrepreneurs to pitch ideas, explore others, and gain exposure with clean design.',
-    image: '/lovable-uploads/c8b97f60-f85b-43f8-9b08-1f53f29e7206.png',
-    url: 'https://example.com/nextventures',
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Auth.js', 'Sanity.cms', 'GROQ', 'Sentry', 'markdown'],
-    features: [
-      'Leveraged Partial Prerendering and After for faster loading.',
-      'Simplified idea submission with a clean, intuitive design.',
-      'Enhanced browsing with seamless performance optimization.'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Fitness Tracker',
-    description: 'A comprehensive fitness tracking application with personalized workout plans and progress visualization.',
-    image: 'https://picsum.photos/id/26/800/600',
-    url: 'https://example.com/fitnesstracker',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js'],
-    features: [
-      'Real-time workout tracking and analytics',
-      'Personalized fitness recommendations',
-      'Social sharing and community features'
-    ]
-  },
-  {
-    id: 3,
-    title: 'E-commerce Platform',
-    description: 'A modern e-commerce solution with advanced product filtering and secure checkout process.',
-    image: 'https://picsum.photos/id/96/800/600',
-    url: 'https://example.com/ecommerce',
-    technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma', 'TailwindCSS'],
-    features: [
-      'Secure payment processing with Stripe integration',
-      'Advanced product filtering and search capabilities',
-      'Responsive design for all devices'
-    ]
-  }
-];
+import { projects } from '@/constants/portfolioData';
+import BackgroundAnimation from './BackgroundAnimation';
 
 const ProjectsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -52,8 +11,6 @@ const ProjectsSection = () => {
   
   // Fixed height for the entire section
   const SECTION_HEIGHT = 100 * projects.length; // vh
-  // Height for each project
-  const PROJECT_HEIGHT = 100; // vh
   
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +44,9 @@ const ProjectsSection = () => {
       ref={sectionRef}
       style={{ height: `${SECTION_HEIGHT}vh` }}
     >
+      {/* Three.js background animation */}
+      <BackgroundAnimation color="#4a00e0" particleCount={1500} speed={0.0005} />
+      
       {/* Fixed header */}
       <div className="sticky top-0 left-0 right-0 h-screen w-full overflow-hidden">
         {/* Section title */}
@@ -115,11 +75,11 @@ const ProjectsSection = () => {
         </div>
         
         {/* Project content container - fixed position */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 container mx-auto px-6 md:px-10 lg:px-16">
+        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col items-center">
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+              className={`w-full max-w-6xl ${index === 0 ? 'mt-0' : 'mt-[100vh]'} mb-[20vh] relative`}
               initial={{ opacity: 0, y: 100 }}
               animate={{ 
                 opacity: currentProject === index ? 1 : 0,
@@ -132,86 +92,87 @@ const ProjectsSection = () => {
                 ease: "easeInOut",
                 opacity: { duration: 0.5 }
               }}
-              style={{ position: 'absolute', width: '100%' }}
             >
-              {/* Project Image - Left Side */}
-              <motion.div 
-                className="rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/30"
-                whileInView={{ 
-                  boxShadow: '0 25px 50px -12px rgba(124, 58, 237, 0.4)'
-                }}
-                transition={{ duration: 1 }}
-              >
-                <div className="aspect-w-16 aspect-h-9 relative overflow-hidden">
-                  <motion.img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover object-center"
-                    initial={{ scale: 1.1 }}
-                    animate={{ 
-                      scale: currentProject === index ? 1 : 1.1,
-                    }}
-                    transition={{ duration: 1.5 }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <a 
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer" 
-                    className="absolute bottom-6 right-6 inline-flex items-center justify-center gap-2 py-2 px-4 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 transition-all w-max backdrop-blur-sm"
-                  >
-                    Visit Website <ExternalLink size={14} />
-                  </a>
-                </div>
-              </motion.div>
-              
-              {/* Project Details - Right Side */}
-              <motion.div 
-                className="flex flex-col"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ 
-                  opacity: currentProject === index ? 1 : 0, 
-                  x: currentProject === index ? 0 : 30 
-                }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <div className="flex items-center mb-8">
-                  <div className="h-1 w-8 bg-pink-500 mr-4"></div>
-                  <h3 className="text-2xl md:text-3xl font-bold">{project.title}</h3>
-                </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                {/* Project Image - Left Side */}
+                <motion.div 
+                  className="rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/30"
+                  whileInView={{ 
+                    boxShadow: '0 25px 50px -12px rgba(124, 58, 237, 0.4)'
+                  }}
+                  transition={{ duration: 1 }}
+                >
+                  <div className="aspect-w-16 aspect-h-9 relative overflow-hidden">
+                    <motion.img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-center"
+                      initial={{ scale: 1.1 }}
+                      animate={{ 
+                        scale: currentProject === index ? 1 : 1.1,
+                      }}
+                      transition={{ duration: 1.5 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <a 
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="absolute bottom-6 right-6 inline-flex items-center justify-center gap-2 py-2 px-4 bg-white/10 hover:bg-white/20 rounded-full border border-white/20 transition-all w-max backdrop-blur-sm"
+                    >
+                      Visit Website <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </motion.div>
+                
+                {/* Project Details - Right Side */}
+                <motion.div 
+                  className="flex flex-col"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ 
+                    opacity: currentProject === index ? 1 : 0, 
+                    x: currentProject === index ? 0 : 30 
+                  }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <div className="flex items-center mb-8">
+                    <div className="h-1 w-8 bg-pink-500 mr-4"></div>
+                    <h3 className="text-2xl md:text-3xl font-bold">{project.title}</h3>
+                  </div>
 
-                <p className="text-gray-300 mb-8">
-                  {project.description}
-                </p>
+                  <p className="text-gray-300 mb-8">
+                    {project.description}
+                  </p>
 
-                <div className="space-y-4 mb-8">
-                  {project.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <span className="text-pink-500 mr-2 mt-1">+</span>
-                      <p className="text-gray-300">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-auto">
-                  <h4 className="text-lg font-semibold mb-4">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, idx) => (
-                      <motion.span 
-                        key={idx}
-                        className="bg-gray-800/80 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700 shadow-lg"
-                        whileHover={{ 
-                          scale: 1.05, 
-                          backgroundColor: 'rgba(255,255,255,0.1)',
-                          boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.5)'
-                        }}
-                      >
-                        {tech}
-                      </motion.span>
+                  <div className="space-y-4 mb-8">
+                    {project.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start">
+                        <span className="text-pink-500 mr-2 mt-1">+</span>
+                        <p className="text-gray-300">{feature}</p>
+                      </div>
                     ))}
                   </div>
-                </div>
-              </motion.div>
+
+                  <div className="mt-auto">
+                    <h4 className="text-lg font-semibold mb-4">Technologies Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, idx) => (
+                        <motion.span 
+                          key={idx}
+                          className="bg-gray-800/80 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700 shadow-lg"
+                          whileHover={{ 
+                            scale: 1.05, 
+                            backgroundColor: 'rgba(255,255,255,0.1)',
+                            boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.5)'
+                          }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
