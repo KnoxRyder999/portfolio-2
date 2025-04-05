@@ -1,96 +1,97 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { projects } from '@/constants/portfolioData';
 import BackgroundAnimation from './BackgroundAnimation';
+import { Button } from './ui/button';
 
 const ProjectsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const [currentProject, setCurrentProject] = useState(0);
   
-  // Fixed height for the entire section
-  const SECTION_HEIGHT = 100 * projects.length; // vh
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  };
   
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollPosition = window.scrollY;
-      const sectionTop = scrollPosition + rect.top;
-      const scrollOffset = scrollPosition - sectionTop;
-      
-      // Calculate which project should be visible based on scroll position
-      const projectIndex = Math.max(
-        0,
-        Math.min(
-          Math.floor(scrollOffset / (window.innerHeight)),
-          projects.length - 1
-        )
-      );
-      
-      setCurrentProject(projectIndex);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  };
   
   return (
     <section 
       id="work" 
-      className="relative bg-black"
-      ref={sectionRef}
-      style={{ height: `${SECTION_HEIGHT}vh` }}
+      className="relative bg-black min-h-screen"
     >
       {/* Three.js background animation */}
       <BackgroundAnimation color="#4a00e0" particleCount={1500} speed={0.0005} />
       
-      {/* Fixed header */}
-      <div className="sticky top-0 left-0 right-0 h-screen w-full overflow-hidden">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28 lg:py-40 relative z-10">
         {/* Section title */}
-        <div className="absolute top-[15%] left-0 right-0 z-30 pointer-events-none">
-          <div className="container mx-auto px-6 md:px-10 lg:px-16">
-            <div className="text-center">
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="text-gray-400 mb-4 uppercase tracking-widest"
-              >
-                FEATURED CASE STUDIES
-              </motion.p>
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold"
-              >
-                Curated <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-serif italic">work</span>
-              </motion.h2>
-            </div>
-          </div>
+        <div className="text-center mb-16">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gray-400 mb-4 uppercase tracking-widest"
+          >
+            FEATURED CASE STUDIES
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold"
+          >
+            Curated <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-serif italic">work</span>
+          </motion.h2>
         </div>
         
-        {/* Project content container - fixed position */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col items-center">
+        {/* Project carousel */}
+        <div className="w-full max-w-6xl mx-auto relative">
+          {/* Navigation buttons */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 md:-left-16 z-20">
+            <Button 
+              onClick={prevProject} 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full bg-black/30 backdrop-blur-md border border-white/10 hover:bg-black/50"
+            >
+              <ChevronLeft />
+              <span className="sr-only">Previous project</span>
+            </Button>
+          </div>
+          
+          <div className="absolute top-1/2 -translate-y-1/2 right-0 md:-right-16 z-20">
+            <Button 
+              onClick={nextProject} 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full bg-black/30 backdrop-blur-md border border-white/10 hover:bg-black/50"
+            >
+              <ChevronRight />
+              <span className="sr-only">Next project</span>
+            </Button>
+          </div>
+          
+          {/* Project content */}
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              className={`w-full max-w-6xl ${index === 0 ? 'mt-0' : 'mt-[100vh]'} mb-[20vh] relative`}
-              initial={{ opacity: 0, y: 100 }}
+              className="w-full relative"
+              initial={{ opacity: 0, x: 100 }}
               animate={{ 
                 opacity: currentProject === index ? 1 : 0,
-                y: currentProject === index ? 0 : 100,
-                scale: currentProject === index ? 1 : 0.95,
+                x: currentProject === index ? 0 : 100,
                 pointerEvents: currentProject === index ? 'auto' : 'none',
               }}
               transition={{ 
-                duration: 0.8, 
-                ease: "easeInOut",
-                opacity: { duration: 0.5 }
+                duration: 0.5, 
+                ease: "easeInOut"
+              }}
+              style={{ 
+                position: currentProject === index ? 'relative' : 'absolute',
+                top: 0
               }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -108,9 +109,7 @@ const ProjectsSection = () => {
                       alt={project.title} 
                       className="w-full h-full object-cover object-center"
                       initial={{ scale: 1.1 }}
-                      animate={{ 
-                        scale: currentProject === index ? 1 : 1.1,
-                      }}
+                      animate={{ scale: 1 }}
                       transition={{ duration: 1.5 }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -129,10 +128,7 @@ const ProjectsSection = () => {
                 <motion.div 
                   className="flex flex-col"
                   initial={{ opacity: 0, x: 30 }}
-                  animate={{ 
-                    opacity: currentProject === index ? 1 : 0, 
-                    x: currentProject === index ? 0 : 30 
-                  }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <div className="flex items-center mb-8">
@@ -178,20 +174,26 @@ const ProjectsSection = () => {
         </div>
         
         {/* Project indicator dots */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3">
+        <div className="flex justify-center space-x-3 mt-10">
           {projects.map((_, idx) => (
-            <motion.div
+            <button
               key={idx}
-              className={`h-2 w-2 rounded-full ${
-                currentProject === idx ? 'bg-pink-500 scale-150' : 'bg-white/40'
-              }`}
-              animate={{
-                scale: currentProject === idx ? 1.5 : 1,
-                backgroundColor: currentProject === idx ? 
-                  'rgba(236, 72, 153, 1)' : 'rgba(255, 255, 255, 0.4)'
-              }}
-              transition={{ duration: 0.3 }}
-            />
+              onClick={() => setCurrentProject(idx)}
+              className="focus:outline-none"
+              aria-label={`Go to project ${idx + 1}`}
+            >
+              <motion.div
+                className={`h-2 w-2 rounded-full ${
+                  currentProject === idx ? 'bg-pink-500' : 'bg-white/40'
+                }`}
+                animate={{
+                  scale: currentProject === idx ? 1.5 : 1,
+                  backgroundColor: currentProject === idx ? 
+                    'rgba(236, 72, 153, 1)' : 'rgba(255, 255, 255, 0.4)'
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </button>
           ))}
         </div>
       </div>
