@@ -3,12 +3,12 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { contactInfo } from '@/constants/portfolioData';
 import BackgroundAnimation from './BackgroundAnimation';
+import * as LucideIcons from 'lucide-react';
 
-// Dynamic icon import
+// Dynamic icon component resolver using ES modules
 const getIconComponent = (iconName: string) => {
-  // Dynamically import from lucide-react
-  const icons = require('lucide-react');
-  const IconComponent = icons[iconName];
+  // Access the icon from the imported LucideIcons object
+  const IconComponent = (LucideIcons as Record<string, React.ComponentType<any>>)[iconName];
   return IconComponent ? <IconComponent size={28} className="mb-4 text-blue-400" /> : null;
 };
 
