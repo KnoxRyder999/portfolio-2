@@ -101,7 +101,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 project-card"
+              className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 slide-in-blur"
               variants={itemVariants}
               whileHover="hover"
               viewport={{ once: true, margin: "-100px" }}
@@ -115,7 +115,6 @@ const ProjectsSection = () => {
                 filter: "blur(5px)",
                 transition: { duration: 0.5 }
               }}
-              className="slide-in-blur"
             >
               {/* Left side - Project showcase with enhanced hover effects */}
               <motion.div 
