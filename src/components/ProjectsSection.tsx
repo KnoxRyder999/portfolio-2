@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { ExternalLink, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '@/constants/portfolioData';
 import BackgroundAnimation from './BackgroundAnimation';
@@ -8,16 +7,6 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 
 const ProjectsSection = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-  
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  };
-  
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
-  };
-  
   return (
     <section 
       id="work" 
@@ -48,25 +37,16 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
         
-        {/* Project content */}
-        <div className="w-full max-w-7xl mx-auto">
+        {/* Project content - now showing all projects vertically */}
+        <div className="w-full max-w-7xl mx-auto space-y-24">
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
               className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: currentProject === index ? 1 : 0,
-                scale: currentProject === index ? 1 : 0.95,
-                pointerEvents: currentProject === index ? 'auto' : 'none',
-              }}
-              transition={{ duration: 0.5 }}
-              style={{ 
-                position: currentProject === index ? 'relative' : 'absolute',
-                top: 0,
-                left: 0,
-                right: 0
-              }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Left side - Project showcase */}
               <div className="lg:col-span-7 relative">
@@ -76,9 +56,8 @@ const ProjectsSection = () => {
                     src={project.image} 
                     alt={project.title} 
                     className="w-full h-auto object-cover"
-                    initial={{ scale: 1.05 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 2 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 1 }}
                   />
                   <div className="absolute top-5 left-5 z-10">
                     <div className="bg-purple-600/90 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
@@ -106,7 +85,8 @@ const ProjectsSection = () => {
               <div className="lg:col-span-5 flex flex-col justify-center space-y-6">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.2, duration: 0.6 }}
                   className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-white/5"
                 >
@@ -122,7 +102,8 @@ const ProjectsSection = () => {
                         key={idx}
                         className="flex items-start gap-3"
                         initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.3 + idx * 0.1 }}
                       >
                         <div className="flex-shrink-0 mt-1">
@@ -144,7 +125,8 @@ const ProjectsSection = () => {
                           key={idx}
                           className="bg-gray-800/80 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/50 shadow-lg"
                           initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
                           transition={{ delay: 0.5 + idx * 0.05 }}
                           whileHover={{ 
                             scale: 1.05, 
@@ -158,7 +140,8 @@ const ProjectsSection = () => {
                         <motion.span 
                           className="bg-gray-800/50 text-gray-400 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/30"
                           initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
                           transition={{ delay: 0.8 }}
                         >
                           +{project.technologies.length - 6} more
@@ -170,7 +153,8 @@ const ProjectsSection = () => {
                   <motion.div 
                     className="mt-8"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.9 }}
                   >
                     <a 
@@ -186,42 +170,6 @@ const ProjectsSection = () => {
               </div>
             </motion.div>
           ))}
-        </div>
-        
-        {/* Project navigation */}
-        <div className="flex justify-between items-center mt-12">
-          <div className="flex space-x-2">
-            <Button onClick={prevProject} variant="outline" size="icon" className="rounded-full">
-              <ChevronLeft size={16} />
-              <span className="sr-only">Previous project</span>
-            </Button>
-            <Button onClick={nextProject} variant="outline" size="icon" className="rounded-full">
-              <ChevronRight size={16} />
-              <span className="sr-only">Next project</span>
-            </Button>
-          </div>
-          
-          {/* Project indicator dots */}
-          <div className="flex space-x-2">
-            {projects.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentProject(idx)}
-                className="focus:outline-none"
-                aria-label={`Go to project ${idx + 1}`}
-              >
-                <motion.div
-                  className={`h-2 w-2 rounded-full ${
-                    currentProject === idx ? 'bg-purple-500' : 'bg-white/30'
-                  }`}
-                  animate={{
-                    scale: currentProject === idx ? 1.5 : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </section>
