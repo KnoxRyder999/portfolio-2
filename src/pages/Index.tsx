@@ -13,7 +13,9 @@ import ThreeBackground from '../components/ThreeBackground';
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <ThreeBackground />
+      {/* Main background for the whole site */}
+      <ThreeBackground type="stars" color="#8a2be2" density={2000} speed={0.0003} />
+      
       <Navbar />
       <main>
         <HeroSection />

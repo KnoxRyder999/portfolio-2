@@ -2,7 +2,7 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { contactInfo } from '@/constants/portfolioData';
-import BackgroundAnimation from './BackgroundAnimation';
+import ThreeBackground from './ThreeBackground';
 import * as LucideIcons from 'lucide-react';
 
 // Dynamic icon component resolver using ES modules
@@ -27,8 +27,8 @@ const ContactSection = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-black/90 to-purple-900/40 backdrop-blur-sm"></div>
       
-      {/* Three.js background animation (with less particles for subtlety) */}
-      <BackgroundAnimation color="#3b82f6" particleCount={600} speed={0.0002} />
+      {/* Three.js background with stars */}
+      <ThreeBackground type="stars" color="#3b82f6" density={600} speed={0.0002} />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}

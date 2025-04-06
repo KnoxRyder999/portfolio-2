@@ -3,7 +3,7 @@ import { Linkedin, Github, Twitter, BookOpen, Briefcase, Calendar, Award } from 
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/hooks/useScrollReveal';
 import { experienceData, socialLinks } from '@/constants/portfolioData';
-import BackgroundAnimation from './BackgroundAnimation';
+import ThreeBackground from './ThreeBackground';
 
 const ExperienceItem = ({ title, company, period, location, descriptions }: { 
   title: string; 
@@ -39,8 +39,8 @@ const ExperienceItem = ({ title, company, period, location, descriptions }: {
 const AboutSection = () => {
   return (
     <section id="about" className="bg-black py-20 relative overflow-hidden">
-      {/* Three.js background animation */}
-      <BackgroundAnimation color="#9333ea" particleCount={800} speed={0.0003} />
+      {/* Three.js custom background */}
+      <ThreeBackground type="particles" color="#9333ea" density={800} speed={0.0003} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="mb-12">

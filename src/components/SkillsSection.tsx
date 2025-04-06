@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Server, Database, Settings, Layout, Coins } from 'lucide-react';
 import { skillCategories } from '@/constants/portfolioData';
-import BackgroundAnimation from './BackgroundAnimation';
+import ThreeBackground from './ThreeBackground';
 
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
@@ -25,8 +25,8 @@ const SkillsSection = () => {
       ref={sectionRef}
       className="relative bg-gradient-to-b from-black to-[#07071c] py-28 lg:py-40 overflow-hidden"
     >
-      {/* Three.js background animation */}
-      <BackgroundAnimation color="#0070f3" particleCount={1200} speed={0.0008} />
+      {/* Three.js background with waves */}
+      <ThreeBackground type="waves" color="#0070f3" density={1000} speed={0.0008} />
       
       <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
         <div className="flex flex-col items-center mb-20">
