@@ -3,44 +3,74 @@
 export const projects = [
   {
     id: 1,
-    title: 'Next Ventures',
-    description: 'A online space for entrepreneurs to pitch ideas, explore others, and gain exposure with clean design.',
-    image: '/lovable-uploads/c8b97f60-f85b-43f8-9b08-1f53f29e7206.png',
-    url: 'https://example.com/nextventures',
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Auth.js', 'Sanity.cms', 'GROQ', 'Sentry', 'markdown'],
+    title: 'Laika Chain - Blockchain Platform',
+    description: 'A high-performance blockchain platform facilitating secure transactions, token staking, cross-chain transfers, and automated airdrops with intuitive UI/UX design.',
+    image: '/png/laika1.png',
+    url: 'https://laikachain.dog/',
+    technologies: ['React', 'Next.js', 'Node.js', 'Ethereum', 'Solana', 'Express', 'MongoDB', 'Smart Contracts', 'Web3.js'],
     features: [
-      'Leveraged Partial Prerendering and After for faster loading.',
-      'Simplified idea submission with a clean, intuitive design.',
-      'Enhanced browsing with seamless performance optimization.'
-    ]
+      'Developed secure staking system with real-time reward calculations, providing full transparency on earnings',
+      'Built cross-chain bridge enabling seamless asset transfers between blockchain networks with minimal fees',
+      'Implemented automated airdrop system with eligibility verification and claim tracking for promotional events',
+      'Optimized platform performance, reducing load times by 30% through advanced front-end techniques'
+    ],
+    role: 'Full-Stack | Blockchain | Cross-Chain, Ethereum, Solana, Node.js, Mongodb, OpenAI API, React, Chart',
+    company: 'SoftServe',
+    period: '2023-2025'
   },
   {
     id: 2,
-    title: 'Fitness Tracker',
-    description: 'A comprehensive fitness tracking application with personalized workout plans and progress visualization.',
-    image: 'https://picsum.photos/id/26/800/600',
-    url: 'https://example.com/fitnesstracker',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js'],
+    title: 'Ceras Health - Healthcare Platform',
+    description: 'Scalable healthcare solution for an online health retailer serving customers across Europe with improved performance and personalized recommendations.',
+    image: '/png/ceras.png',
+    url: 'https://cerashealth.com/',
+    technologies: ['Next.js', 'Node.js', 'Django', 'MongoDB', 'AWS', 'RESTful APIs'],
     features: [
-      'Real-time workout tracking and analytics',
-      'Personalized fitness recommendations',
-      'Social sharing and community features'
-    ]
+      'Engineered scalable API systems improving backend performance with 40% faster load times',
+      'Integrated real-time product recommendation engines increasing customer conversion rates',
+      'Implemented seamless integration between frontend and backend systems for reliable e-commerce features',
+      'Optimized server responses to handle peak traffic periods with enhanced reliability'
+    ],
+    role: 'Full-Stack Developer',
+    company: 'HTEC',
+    period: '2022-2023'
   },
   {
     id: 3,
-    title: 'E-commerce Platform',
-    description: 'A modern e-commerce solution with advanced product filtering and secure checkout process.',
-    image: 'https://picsum.photos/id/96/800/600',
-    url: 'https://example.com/ecommerce',
-    technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma', 'TailwindCSS'],
+    title: 'Monzo - Banking System',
+    description: 'High-performance banking application serving over 5 million users with secure financial transaction processing and optimized data handling.',
+    image: '/png/monzo1.png',
+    url: 'https://monzo.com/',
+    technologies: ['React', 'Node.js', 'Express', 'Stripe', 'PayPal', 'Shopify', 'MongoDB', 'RESTful APIs'],
     features: [
-      'Secure payment processing with Stripe integration',
-      'Advanced product filtering and search capabilities',
-      'Responsive design for all devices'
-    ]
+      'Built secure, high-performance APIs for payments and financial transactions serving 5+ million users',
+      'Reduced data processing time by 30%, enhancing banking efficiency and user satisfaction',
+      'Integrated multiple payment solutions including Stripe, PayPal, and Shopify for seamless transaction processing',
+      'Developed robust backend services optimized for handling sensitive financial data at scale'
+    ],
+    role: 'Software Engineer',
+    company: 'Monzo',
+    period: '2020-2021'
+  },
+  {
+    id: 4,
+    title: 'Vinted - European Marketplace',
+    description: 'Scalable microservices architecture for a major European marketplace with enhanced search functionality and recommendation systems.',
+    image: '/png/vinted.png',
+    url: 'https://www.vinted.com/',
+    technologies: ['Node.js', 'React', 'Microservices', 'Stripe', 'PayPal', 'Google Cloud', 'RESTful APIs'],
+    features: [
+      'Developed and maintained microservices architecture improving transaction speed and system scalability',
+      'Enhanced platform search functionality and user recommendation systems using Node.js and React',
+      'Reduced platform load times by 25% for both mobile and desktop versions, improving user experience',
+      'Implemented payment processing with PayPal and Stripe and cloud hosting via Google Cloud'
+    ],
+    role: 'Full-Stack Developer',
+    company: 'Balt',
+    period: '2019-2020'
   }
 ];
+
 
 // Skills data
 export const skillCategories = [

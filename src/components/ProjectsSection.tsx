@@ -1,4 +1,3 @@
-
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '@/constants/portfolioData';
@@ -84,7 +83,7 @@ const ProjectsSection = () => {
             variants={textVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-bold"
           >
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-serif italic">Work</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-serif italic">Works</span>
           </motion.h2>
         </motion.div>
         
@@ -116,17 +115,17 @@ const ProjectsSection = () => {
             >
               {/* Left side - Project showcase with enhanced hover effects */}
               <motion.div 
-                className="lg:col-span-7 relative"
+                className="lg:col-span-6 relative h-full"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-purple-900/20 group transition-all duration-300">
+                <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-purple-900/20 group transition-all duration-300 h-full">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10 transition-all duration-300"></div>
                   <motion.img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-auto object-cover shine transition-all duration-300"
+                    className="w-full h-full object-cover shine transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 1 }}
                     initial={{ opacity: 0.8, filter: "blur(2px)" }}
@@ -146,39 +145,12 @@ const ProjectsSection = () => {
                       Featured Project
                     </motion.div>
                   </div>
-                  <div className="absolute bottom-5 right-5 z-10">
-                    <motion.a 
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer" 
-                      className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2 border border-white/10 transition-all duration-300 btn-glow"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.5 }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "rgba(0,0,0,0.6)",
-                        transition: { duration: 0.2 }
-                      }}
-                    >
-                      Visit Project <ExternalLink size={14} />
-                    </motion.a>
-                  </div>
-                  <motion.div 
-                    className="absolute inset-x-0 bottom-0 p-6 z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                  >
-                    <h3 className="text-3xl font-bold text-white mb-1 transition-all duration-300">{project.title}</h3>
-                    <p className="text-white/70 transition-all duration-300 hover:text-white">{project.description}</p>
-                  </motion.div>
                 </div>
               </motion.div>
               
               {/* Right side - Project details with staggered animations */}
               <motion.div 
-                className="lg:col-span-5 flex flex-col justify-end space-y-6"
+                className="lg:col-span-6 flex flex-col h-full"
                 variants={itemVariants}
               >
                 <motion.div 
@@ -186,7 +158,7 @@ const ProjectsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-white/5 hover-3d transition-all duration-300 hover:bg-gray-900/60 hover:border-white/10"
+                  className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-white/5 hover-3d transition-all duration-300 hover:bg-gray-900/60 hover:border-white/10 h-full"
                   whileHover={{ 
                     backgroundColor: "rgba(25, 25, 35, 0.6)",
                     borderColor: "rgba(255, 255, 255, 0.15)",

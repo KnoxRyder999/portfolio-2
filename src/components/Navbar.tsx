@@ -37,8 +37,8 @@ const Navbar = () => {
           <a href="#about" className="text-white/80 hover:text-white transition-all duration-300">
             About
           </a>
-          <a href="#blog" className="text-white/80 hover:text-white transition-all duration-300">
-            Blog
+          <a href="#skills" className="text-white/80 hover:text-white transition-all duration-300">
+            Skills
           </a>
           <div className="relative group">
             <button className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-1">
