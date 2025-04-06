@@ -43,7 +43,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-blue-900/30 text-blue-200 px-4 py-1.5 rounded-full mb-8 border border-blue-500/30 shadow-lg shadow-blue-500/20"
+              className="inline-flex items-center gap-2 bg-blue-900/30 text-blue-200 px-4 py-1.5 rounded-full mb-8 border border-blue-500/30 shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-blue-900/40"
             >
               <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
               <span className="text-sm font-medium">Expert Full-Stack Developer</span>
@@ -82,7 +82,7 @@ const HeroSection = () => {
                 <div className="relative h-12 w-12">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
                   <img
-                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    src="/lovable-uploads/50190d57-b22f-47da-9980-7f5605771b38.png"
                     alt="Profile"
                     className="w-12 h-12 rounded-full object-cover relative z-10 border-2 border-white"
                   />
@@ -98,14 +98,14 @@ const HeroSection = () => {
             >
               <a
                 href="#contact"
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full border border-white/20 transition-all group shadow-lg shadow-purple-900/10"
+                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full border border-white/20 transition-all duration-300 group shadow-lg shadow-purple-900/10"
               >
                 Let's Connect
                 <span className="bg-white rounded-full p-1 text-black group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={16} />
                 </span>
               </a>
-              <div className="flex items-center gap-2 text-gray-300">
+              <div className="flex items-center gap-2 text-gray-300 transition-all duration-300 hover:text-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 <span>suroviahinartem@gmail.com</span>
               </div>
@@ -158,11 +158,11 @@ const HeroSection = () => {
                 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl shadow-purple-900/20 border-4 border-white/10">
+                <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl shadow-purple-900/20 border-4 border-white/10 transition-all duration-300 hover:border-white/30">
                   <img
-                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    src="/lovable-uploads/50190d57-b22f-47da-9980-7f5605771b38.png"
                     alt="Artem Surovihin"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
               </motion.div>

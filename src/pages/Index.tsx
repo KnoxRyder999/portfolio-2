@@ -1,13 +1,12 @@
 
 import React from 'react';
-import UpdatedHeroSection from '../components/UpdatedHeroSection';
+import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
-import NewSkillsSection from '../components/NewSkillsSection';
+import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import SimpleFooter from '../components/SimpleFooter';
 import Navbar from '../components/Navbar';
-import FeaturesSection from '../components/FeaturesSection';
 import BackgroundAnimation from '../components/BackgroundAnimation';
 
 const Index = () => {
@@ -16,10 +15,9 @@ const Index = () => {
       <BackgroundAnimation />
       <Navbar />
       <main>
-        <UpdatedHeroSection />
+        <HeroSection />
         <AboutSection />
-        <NewSkillsSection />
-        <FeaturesSection />
+        <SkillsSection />
         <ProjectsSection />
         <ContactSection />
       </main>

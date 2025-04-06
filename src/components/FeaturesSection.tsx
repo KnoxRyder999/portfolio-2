@@ -10,7 +10,7 @@ const FeatureCard: React.FC<{
   bgClass?: string;
 }> = ({ icon, title, description, image, bgClass }) => {
   return (
-    <div className={`rounded-3xl overflow-hidden ${bgClass || 'bg-black'}`}>
+    <div className={`rounded-3xl overflow-hidden ${bgClass || 'bg-black'} transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/10`}>
       <div className="p-6 md:p-8 h-full flex flex-col">
         <div className="mb-3">{icon}</div>
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -18,7 +18,7 @@ const FeatureCard: React.FC<{
         {image && (
           <div className="mt-auto pt-4">
             <div className="flex flex-wrap gap-2">
-              <img src={image} alt={title} className="h-12 w-12 object-cover rounded-xl" />
+              <img src={image} alt={title} className="h-12 w-12 object-cover rounded-xl transition-transform duration-300 hover:scale-110" />
             </div>
           </div>
         )}
@@ -33,7 +33,7 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {/* Main Feature Card */}
-          <div className="lg:col-span-2 bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden">
+          <div className="lg:col-span-2 bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:border hover:border-blue-500/30">
             <div className="p-6 md:p-8">
               <div className="flex items-center mb-3 text-gray-200">
                 <Users size={24} className="mr-3" />
@@ -46,29 +46,29 @@ const FeaturesSection = () => {
                 <img
                   src="https://randomuser.me/api/portraits/men/32.jpg"
                   alt="Team member"
-                  className="h-20 w-full object-cover rounded-xl"
+                  className="h-20 w-full object-cover rounded-xl transition-transform duration-300 hover:scale-110"
                 />
                 <img
                   src="https://randomuser.me/api/portraits/women/44.jpg"
                   alt="Team member"
-                  className="h-20 w-full object-cover rounded-xl"
+                  className="h-20 w-full object-cover rounded-xl transition-transform duration-300 hover:scale-110"
                 />
                 <img
                   src="https://randomuser.me/api/portraits/men/45.jpg"
                   alt="Team member"
-                  className="h-20 w-full object-cover rounded-xl"
+                  className="h-20 w-full object-cover rounded-xl transition-transform duration-300 hover:scale-110"
                 />
                 <img
                   src="https://randomuser.me/api/portraits/women/68.jpg"
                   alt="Team member"
-                  className="h-20 w-full object-cover rounded-xl"
+                  className="h-20 w-full object-cover rounded-xl transition-transform duration-300 hover:scale-110"
                 />
               </div>
             </div>
           </div>
 
           {/* Right side feature */}
-          <div className="md:row-span-2 bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden">
+          <div className="md:row-span-2 bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:border hover:border-blue-500/30">
             <div className="p-6 md:p-8 h-full flex flex-col">
               <h3 className="text-xl md:text-2xl font-semibold mb-4">
                 I'm very flexible with time <span className="block text-blue-400">zone communications</span>
@@ -80,7 +80,7 @@ const FeaturesSection = () => {
                 <img
                   src="/lovable-uploads/3c740f1a-f225-41c9-81d9-cc2b572bc612.png"
                   alt="World Map"
-                  className="w-full h-full object-contain relative z-10"
+                  className="w-full h-full object-contain relative z-10 transition-transform duration-300 hover:scale-105"
                 />
               </div>
               <div className="mt-6">
@@ -94,7 +94,7 @@ const FeaturesSection = () => {
           </div>
 
           {/* Technology stack */}
-          <div className="bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden">
+          <div className="bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:border hover:border-blue-500/30">
             <div className="p-6 md:p-8">
               <div className="flex items-center mb-3 text-gray-200">
                 <Code2 size={24} className="mr-3" />
@@ -104,7 +104,7 @@ const FeaturesSection = () => {
                 {['React', 'Node.js', 'TypeScript', 'Next.js', 'Express', 'MongoDB'].map((tech) => (
                   <div
                     key={tech}
-                    className="flex items-center justify-center h-12 bg-white/5 rounded-lg border border-white/10 text-sm"
+                    className="flex items-center justify-center h-12 bg-white/5 rounded-lg border border-white/10 text-sm transition-all duration-300 hover:bg-white/10 hover:border-blue-500/30"
                   >
                     {tech}
                   </div>
@@ -113,19 +113,19 @@ const FeaturesSection = () => {
             </div>
           </div>
 
-          {/* Let's work together card */}
-          <div className="bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden">
+          {/* Contact me card (replaced "Let's work together" card) */}
+          <div className="bg-gradient-to-br from-black to-gray-900 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:border hover:border-blue-500/30">
             <div className="p-6 md:p-8 text-center">
-              <div className="w-16 h-16 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 hover:scale-110">
                 <span className="text-2xl font-bold">AB</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-2">
+              <h3 className="text-xl md:text-2xl font-semibold mb-4">
                 Let's work together <br />
                 on your next project
               </h3>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 mt-6 w-full py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg transition-all"
+                className="inline-flex items-center justify-center gap-2 mt-6 w-full py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg transition-all duration-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 hello@aayushbharti.in

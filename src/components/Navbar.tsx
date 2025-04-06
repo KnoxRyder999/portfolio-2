@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,41 +22,35 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
+        <a href="#home" className="flex items-center gap-2 transition-all duration-300 hover:text-primary">
           <span className="text-white font-bold text-xl">AB</span>
         </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#home" className="text-white/80 hover:text-white transition-colors">
+          <a href="#home" className="text-white/80 hover:text-white transition-all duration-300">
             Home
           </a>
-          <a href="#work" className="text-white/80 hover:text-white transition-colors">
+          <a href="#work" className="text-white/80 hover:text-white transition-all duration-300">
             Work
           </a>
-          <a href="#about" className="text-white/80 hover:text-white transition-colors">
+          <a href="#about" className="text-white/80 hover:text-white transition-all duration-300">
             About
           </a>
-          <a href="#blog" className="text-white/80 hover:text-white transition-colors">
+          <a href="#blog" className="text-white/80 hover:text-white transition-all duration-300">
             Blog
           </a>
           <div className="relative group">
-            <button className="text-white/80 hover:text-white transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white transition-all duration-300 flex items-center gap-1">
               More
             </button>
           </div>
-          <a
-            href="#contact"
-            className="bg-black/30 text-white px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition-colors"
-          >
-            Book a Call
-          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2"
+          className="md:hidden text-white p-2 transition-all duration-300 hover:bg-white/10 rounded-md"
         >
           <div className="w-6 h-5 flex flex-col justify-between">
             <span
@@ -91,37 +84,30 @@ const Navbar = () => {
           <a
             href="#home"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white hover:text-purple-400 transition-colors"
+            className="text-white hover:text-purple-400 transition-all duration-300"
           >
             Home
           </a>
           <a
             href="#work"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white hover:text-purple-400 transition-colors"
+            className="text-white hover:text-purple-400 transition-all duration-300"
           >
             Work
           </a>
           <a
             href="#about"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white hover:text-purple-400 transition-colors"
+            className="text-white hover:text-purple-400 transition-all duration-300"
           >
             About
           </a>
           <a
             href="#blog"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white hover:text-purple-400 transition-colors"
+            className="text-white hover:text-purple-400 transition-all duration-300"
           >
             Blog
-          </a>
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full border border-white/20 transition-all"
-          >
-            Book a Call <ArrowRight size={16} />
           </a>
         </div>
       </div>

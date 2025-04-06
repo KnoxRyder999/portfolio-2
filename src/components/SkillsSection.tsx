@@ -1,126 +1,129 @@
 
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Code2, Server, Database, Settings, Layout, Coins } from 'lucide-react';
+import React from 'react';
 import { skillCategories } from '@/constants/portfolioData';
-import ThreeBackground from './ThreeBackground';
+import { Database, Cloud, Code, Cpu } from 'lucide-react';
+
+interface SkillCardProps {
+  title: string;
+  icon: React.ReactNode;
+  skills: { name: string; icon: string }[];
+}
 
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
-    case 'Layout': return <Layout className="w-6 h-6" />;
-    case 'Server': return <Server className="w-6 h-6" />;
+    case 'Code': return <Code className="w-6 h-6" />;
+    case 'Server': return <Database className="w-6 h-6" />;
     case 'Database': return <Database className="w-6 h-6" />;
-    case 'Settings': return <Settings className="w-6 h-6" />;
-    case 'Coins': return <Coins className="w-6 h-6" />;
-    default: return <Code2 className="w-6 h-6" />;
+    case 'Cloud': return <Cloud className="w-6 h-6" />;
+    default: return <Cpu className="w-6 h-6" />;
   }
 };
 
-const SkillsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
+const SkillCard: React.FC<SkillCardProps> = ({ title, icon, skills }) => {
   return (
-    <section 
-      id="skills" 
-      ref={sectionRef}
-      className="relative bg-gradient-to-b from-black to-[#07071c] py-28 lg:py-40 overflow-hidden"
-    >
-      {/* Three.js background with waves */}
-      <ThreeBackground type="waves" color="#0070f3" density={1000} speed={0.0008} />
-      
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-        <div className="flex flex-col items-center mb-20">
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-gray-400 uppercase tracking-widest text-center"
-          >
-            PROFESSIONAL EXPERTISE
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mt-4"
-          >
-            My Tech Stack
-          </motion.h2>
+    <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10">
+      <div className="p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="text-blue-400">{icon}</div>
+          <h3 className="text-xl font-semibold">{title}</h3>
+        </div>
+        
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill, index) => (
+            <div 
+              key={index}
+              className="flex items-center gap-2 px-3 py-2 bg-gray-800/50 rounded-lg border border-gray-700/50 text-sm transition-all duration-300 hover:bg-gray-700/70 hover:border-blue-500/30"
+            >
+              <span dangerouslySetInnerHTML={{ __html: skill.icon }} className="text-lg" />
+              <span>{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const SkillsSection = () => {
+  return (
+    <section id="skills" className="py-20 bg-black">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-400 mb-6">Skills & Technologies</h2>
+          <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            A comprehensive set of skills and technologies I've mastered throughout my professional journey.
+          </p>
         </div>
 
-        <div className="grid gap-20">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div 
-              key={category.name} 
-              className="relative"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-purple-600/30 to-blue-600/30 shadow-lg shadow-purple-900/20">
-                  {getIconComponent(category.icon)}
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                  {category.name}
-                </h3>
-              </div>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-                {category.skills.map((skill, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 * index }}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)'
-                    }}
-                    className="flex flex-col items-center justify-center p-6 bg-gray-900/50 hover:bg-gray-800/50 rounded-xl border border-gray-800 transition-all cursor-pointer backdrop-blur-sm shadow-lg shadow-purple-900/10"
-                  >
-                    <span className="text-3xl mb-3">{skill.icon}</span>
-                    <span className="text-sm text-center font-medium">{skill.name}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((category, index) => (
+            <SkillCard
+              key={index}
+              title={category.name}
+              icon={getIconComponent(category.icon)}
+              skills={category.skills}
+            />
           ))}
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-20 text-center"
-        >
-          <h3 className="text-xl font-semibold mb-6">Certifications & Achievements</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            <motion.span 
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)' }}
-              className="px-5 py-3 bg-gray-800/50 rounded-full border border-gray-700 text-sm shadow-lg"
-            >
-              Google Cloud Certified – Associate Cloud Engineer
-            </motion.span>
-            <motion.span 
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)' }}
-              className="px-5 py-3 bg-gray-800/50 rounded-full border border-gray-700 text-sm shadow-lg"
-            >
-              Ethereum Blockchain Developer Certification
-            </motion.span>
-            <motion.span 
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 25px -5px rgba(124, 58, 237, 0.3)' }}
-              className="px-5 py-3 bg-gray-800/50 rounded-full border border-gray-700 text-sm shadow-lg"
-            >
-              Contributor to open-source blockchain projects
-            </motion.span>
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-center mb-8">Core Areas of Expertise</h3>
+          
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Code className="text-blue-400" size={18} />
+                  <span className="font-medium">Full-Stack Development</span>
+                </div>
+                <span>95%</span>
+              </div>
+              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-300 h-full rounded-full" style={{ width: '95%' }}></div>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Cpu className="text-purple-400" size={18} />
+                  <span className="font-medium">Blockchain Development</span>
+                </div>
+                <span>90%</span>
+              </div>
+              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div className="bg-gradient-to-r from-purple-500 to-purple-300 h-full rounded-full" style={{ width: '90%' }}></div>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Database className="text-green-400" size={18} />
+                  <span className="font-medium">Application Architecture</span>
+                </div>
+                <span>85%</span>
+              </div>
+              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div className="bg-gradient-to-r from-green-500 to-green-300 h-full rounded-full" style={{ width: '85%' }}></div>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <Cloud className="text-cyan-400" size={18} />
+                  <span className="font-medium">DevOps & Cloud Solutions</span>
+                </div>
+                <span>80%</span>
+              </div>
+              <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                <div className="bg-gradient-to-r from-cyan-500 to-cyan-300 h-full rounded-full" style={{ width: '80%' }}></div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
