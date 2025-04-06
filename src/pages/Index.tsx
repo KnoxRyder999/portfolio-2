@@ -1,31 +1,29 @@
 
 import React from 'react';
-import HeroSection from '../components/HeroSection';
+import UpdatedHeroSection from '../components/UpdatedHeroSection';
 import AboutSection from '../components/AboutSection';
-import SkillsSection from '../components/SkillsSection';
+import NewSkillsSection from '../components/NewSkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
-import FeaturesSection from '../components/FeaturesSection';
 import ContactSection from '../components/ContactSection';
-import Footer from '../components/Footer';
+import SimpleFooter from '../components/SimpleFooter';
 import Navbar from '../components/Navbar';
-import ThreeBackground from '../components/ThreeBackground';
+import FeaturesSection from '../components/FeaturesSection';
+import BackgroundAnimation from '../components/BackgroundAnimation';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      {/* Main background for the whole site */}
-      <ThreeBackground type="stars" color="#8a2be2" density={2000} speed={0.0003} />
-      
+    <div className="min-h-screen font-sans bg-background text-foreground overflow-x-hidden">
+      <BackgroundAnimation />
       <Navbar />
       <main>
-        <HeroSection />
+        <UpdatedHeroSection />
         <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
+        <NewSkillsSection />
         <FeaturesSection />
+        <ProjectsSection />
         <ContactSection />
       </main>
-      <Footer />
+      <SimpleFooter />
     </div>
   );
 };
