@@ -3,8 +3,6 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '@/constants/portfolioData';
 import BackgroundAnimation from './BackgroundAnimation';
-import { Button } from './ui/button';
-import { Card, CardContent } from './ui/card';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const ProjectsSection = () => {
@@ -101,7 +99,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 slide-in-blur"
+              className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 slide-in-blur items-end"
               variants={itemVariants}
               whileHover="hover"
               viewport={{ once: true, margin: "-100px" }}
@@ -123,12 +121,12 @@ const ProjectsSection = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-purple-900/20 group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10"></div>
+                <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-purple-900/20 group transition-all duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-black/40 z-10 transition-all duration-300"></div>
                   <motion.img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-auto object-cover shine"
+                    className="w-full h-auto object-cover shine transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 1 }}
                     initial={{ opacity: 0.8, filter: "blur(2px)" }}
@@ -140,7 +138,7 @@ const ProjectsSection = () => {
                   />
                   <div className="absolute top-5 left-5 z-10">
                     <motion.div 
-                      className="bg-purple-600/90 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm"
+                      className="bg-purple-600/90 text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm transition-all duration-300 hover:bg-purple-600"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3, duration: 0.5 }}
@@ -153,7 +151,7 @@ const ProjectsSection = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer" 
-                      className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2 border border-white/10 transition-all btn-glow"
+                      className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2 border border-white/10 transition-all duration-300 btn-glow"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4, duration: 0.5 }}
@@ -172,15 +170,15 @@ const ProjectsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                   >
-                    <h3 className="text-3xl font-bold text-white mb-1">{project.title}</h3>
-                    <p className="text-white/70">{project.description}</p>
+                    <h3 className="text-3xl font-bold text-white mb-1 transition-all duration-300">{project.title}</h3>
+                    <p className="text-white/70 transition-all duration-300 hover:text-white">{project.description}</p>
                   </motion.div>
                 </div>
               </motion.div>
               
               {/* Right side - Project details with staggered animations */}
               <motion.div 
-                className="lg:col-span-5 flex flex-col justify-center space-y-6"
+                className="lg:col-span-5 flex flex-col justify-end space-y-6"
                 variants={itemVariants}
               >
                 <motion.div 
@@ -188,7 +186,7 @@ const ProjectsSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-white/5 hover-3d"
+                  className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-white/5 hover-3d transition-all duration-300 hover:bg-gray-900/60 hover:border-white/10"
                   whileHover={{ 
                     backgroundColor: "rgba(25, 25, 35, 0.6)",
                     borderColor: "rgba(255, 255, 255, 0.15)",
@@ -215,7 +213,7 @@ const ProjectsSection = () => {
                     {project.features.map((feature, idx) => (
                       <motion.div 
                         key={idx}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-3 transition-all duration-300 hover:translate-x-1"
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -227,12 +225,12 @@ const ProjectsSection = () => {
                           whileInView={{ scale: 1, opacity: 1 }}
                           transition={{ delay: 0.4 + idx * 0.1, duration: 0.4, type: "spring" }}
                         >
-                          <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs pulse-glow">
+                          <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs pulse-glow transition-all duration-300 hover:bg-blue-400">
                             +
                           </div>
                         </motion.div>
                         <motion.p 
-                          className="text-gray-300"
+                          className="text-gray-300 transition-all duration-300 hover:text-white"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           transition={{ delay: 0.5 + idx * 0.1, duration: 0.4 }}
@@ -255,7 +253,7 @@ const ProjectsSection = () => {
                       {project.technologies.slice(0, 6).map((tech, idx) => (
                         <motion.span 
                           key={idx}
-                          className="bg-gray-800/80 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/50 shadow-lg enhanced-tag"
+                          className="bg-gray-800/80 text-gray-300 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/50 shadow-lg enhanced-tag transition-all duration-300 hover:bg-gray-700/80 hover:text-white"
                           initial={{ opacity: 0, scale: 0.9 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
@@ -270,7 +268,7 @@ const ProjectsSection = () => {
                       ))}
                       {project.technologies.length > 6 && (
                         <motion.span 
-                          className="bg-gray-800/50 text-gray-400 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/30"
+                          className="bg-gray-800/50 text-gray-400 text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/30 transition-all duration-300 hover:bg-gray-700/50 hover:text-white"
                           initial={{ opacity: 0, scale: 0.9 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
@@ -293,7 +291,7 @@ const ProjectsSection = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
+                      className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-all duration-300"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
                     >

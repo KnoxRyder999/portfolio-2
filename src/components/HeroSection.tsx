@@ -82,7 +82,7 @@ const HeroSection = () => {
                 <div className="relative h-12 w-12">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
                   <img
-                    src="/lovable-uploads/50190d57-b22f-47da-9980-7f5605771b38.png"
+                    src="/lovable-uploads/3cfed4d4-dd9d-456e-a865-63eb6fecd7a8.png"
                     alt="Profile"
                     className="w-12 h-12 rounded-full object-cover relative z-10 border-2 border-white"
                   />
@@ -160,9 +160,9 @@ const HeroSection = () => {
               >
                 <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl shadow-purple-900/20 border-4 border-white/10 transition-all duration-300 hover:border-white/30">
                   <img
-                    src="/lovable-uploads/50190d57-b22f-47da-9980-7f5605771b38.png"
+                    src="/lovable-uploads/3cfed4d4-dd9d-456e-a865-63eb6fecd7a8.png"
                     alt="Artem Surovihin"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
                   />
                 </div>
               </motion.div>
