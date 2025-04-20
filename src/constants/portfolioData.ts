@@ -192,17 +192,17 @@ export const contactInfo = [
   {
     icon: "Phone",
     title: "Phone",
-    value: "+380963598237"
+    value: "+3800953754592"
   },
   {
     icon: "Mail",
     title: "Email",
-    value: "suroviahinartem@gmail.com"
+    value: "vdmitrenko717@gmail.com"
   },
   {
     icon: "MapPin",
     title: "Location",
-    value: "Kyiv City, Ukraine"
+    value: "Chernihivska 610 Shostka , Sumy 41108 Ukraine"
   },
   {
     icon: "Calendar",
@@ -216,7 +216,7 @@ export const socialLinks = [
   {
     name: "LinkedIn",
     icon: "Linkedin",
-    url: "https://linkedin.com/in/artem-suroviahin-b857a4357"
+    url: "https://www.linkedin.com/in/vitalii-dmytrenko-90a210361"
   },
   {
     name: "GitHub",

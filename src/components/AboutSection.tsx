@@ -3,6 +3,7 @@ import { Linkedin, Github, Twitter, BookOpen, Briefcase, Calendar, Award } from 
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/hooks/useScrollReveal';
 import { experienceData, socialLinks } from '@/constants/portfolioData';
+import { personalData } from '@/constants/personalData';
 import ThreeBackground from './ThreeBackground';
 
 const ExperienceItem = ({ title, company, period, location, descriptions }: { 
@@ -84,8 +85,9 @@ const AboutSection = () => {
                     <Award size={18} className="text-purple-400" />
                     Education
                   </h3>
-                  <p className="text-gray-300">Master's Degree in Computer Engineering</p>
-                  <p className="text-gray-400 text-sm">Kyiv Polytechnic Institute, 2016-2019</p>
+                  <p className="text-gray-300">{personalData.education[0].degree}</p>
+                  <p className="text-gray-400 text-sm">{personalData.education[0].institution}</p>
+                  <p className="text-gray-400 text-sm">{personalData.education[0].year}</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">

@@ -1,6 +1,8 @@
 
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { contactInfo } from '@/constants/portfolioData';
+import { personalData } from '@/constants/personalData';
 
 const HeroSection = () => {
   return (
@@ -56,7 +58,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 font-serif"
             >
-              <span className="block">ARTEM SUROVIHIN</span>
+              <span className="block">{personalData.name}</span>
               <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-100 to-gray-400">
                 Full-Stack Developer
               </span>
@@ -78,11 +80,11 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-12"
             >
               <div className="flex items-center gap-4">
-                <p className="text-gray-300 text-lg">Based in Kyiv, Ukraine</p>
+                <p className="text-gray-300 text-lg">Based in {personalData.location}</p>
                 <div className="relative h-12 w-12">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
                   <img
-                    src="/lovable-uploads/3cfed4d4-dd9d-456e-a865-63eb6fecd7a8.png"
+                    src="/lovable-uploads/profile.jpg"
                     alt="Profile"
                     className="w-12 h-12 rounded-full object-cover relative z-10 border-2 border-white"
                   />
@@ -107,7 +109,7 @@ const HeroSection = () => {
               </a>
               <div className="flex items-center gap-2 text-gray-300 transition-all duration-300 hover:text-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <span>suroviahinartem@gmail.com</span>
+                <span>{personalData.mail}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -160,8 +162,8 @@ const HeroSection = () => {
               >
                 <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl shadow-purple-900/20 border-4 border-white/10 transition-all duration-300 hover:border-white/30">
                   <img
-                    src="/lovable-uploads/3cfed4d4-dd9d-456e-a865-63eb6fecd7a8.png"
-                    alt="Artem Surovihin"
+                    src="/lovable-uploads/profile.jpg"
+                    alt={`${personalData.name} - Profile`}
                     className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
                   />
                 </div>
