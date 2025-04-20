@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { contactInfo } from '@/constants/portfolioData';
 import ThreeBackground from './ThreeBackground';
 import * as LucideIcons from 'lucide-react';
+import { personalData } from '@/constants/personalData';
 
 // Dynamic icon component resolver using ES modules
 const getIconComponent = (iconName: string) => {
@@ -73,7 +74,7 @@ const ContactSection = () => {
           <div className="mt-16">
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href="mailto:suroviahinartem@gmail.com"
+              href={`mailto:${personalData.mail}`}
               className="flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-full border border-white/20 transition-all group shadow-lg shadow-purple-900/10"
             >
               Get In Touch
