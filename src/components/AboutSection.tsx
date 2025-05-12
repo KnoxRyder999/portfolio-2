@@ -44,7 +44,7 @@ const AboutSection = () => {
       <ThreeBackground type="particles" color="#9333ea" density={800} speed={0.0003} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <p className="text-gray-400 uppercase tracking-widest">MY JOURNEY</p>
           <h2 className="text-4xl md:text-5xl font-bold mt-2">About Me</h2>
         </div>
@@ -62,9 +62,7 @@ const AboutSection = () => {
 
               <div className="space-y-6 text-gray-300">
                 <p>
-                  I am a highly skilled Full-Stack Developer with extensive experience in building scalable, high-performance 
-                  web applications and blockchain solutions. I specialize in working with React, Node.js, Next.js, Django, 
-                  and Ethereum, Solana, Tron to deliver custom web development services to European and global clients.
+                  I am a highly skilled Full-Stack Developer with extensive experience in building scalable, high-performance web applications and blockchain solutions. I specialize in working with React, Node.js, Next.js, Django, and Ethereum, Solana, Tron to deliver custom web development services to European and global clients.
                 </p>
 
                 <p>

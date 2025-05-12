@@ -75,13 +75,13 @@ const ProjectsSection = () => {
         >
           <motion.p 
             variants={textVariants}
-            className="text-gray-400 mb-4 uppercase tracking-widest"
+            className="text-gray-400 text-center mb-4 uppercase tracking-widest"
           >
             FEATURED PROJECTS
           </motion.p>
           <motion.h2 
             variants={textVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold"
+            className="text-4xl text-center md:text-5xl lg:text-6xl font-bold"
           >
             My <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-serif italic">Works</span>
           </motion.h2>
@@ -166,13 +166,13 @@ const ProjectsSection = () => {
                   }}
                 >
                   <motion.h3 
-                    className="text-2xl font-bold mb-4 flex items-center"
+                    className="text-2xl text-center font-bold mb-4 flex items-center"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                   >
                     <motion.span 
-                      className="w-2 h-8 bg-purple-500 mr-3 rounded-full"
+                      className="w-2 h-8 text-center bg-purple-500 mr-3 rounded-full"
                       initial={{ height: 0 }}
                       whileInView={{ height: 32 }}
                       transition={{ delay: 0.4, duration: 0.5 }}

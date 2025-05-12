@@ -31,7 +31,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 pt-24 pb-10 relative z-10">
+      <div className="container text-center mx-auto px-6 md:px-10 lg:px-16 pt-24 pb-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left Side - Text Content */}
           <motion.div
@@ -70,7 +70,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-6 text-lg text-gray-300"
             >
-              Specialized in React • Node.js • Django • Blockchain
+              Specialized in Full-Stack • Blockchain • Python
             </motion.div>
 
             <motion.div 

@@ -87,7 +87,7 @@ const ContactSection = () => {
           <div className="mt-20 max-w-3xl text-center">
             <p className="text-2xl">I'm available for full-time roles & freelance projects.</p>
             <p className="text-gray-400 mt-6 text-lg">
-              I specialize in building scalable web applications, blockchain solutions, and delivering seamless user experiences.
+            Integrated real-time blockchain data into web apps using Moralis Streams and Web3, enabling instant smart contract and wallet activity updates.
             </p>
           </div>
         </div>
