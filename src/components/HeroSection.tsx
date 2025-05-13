@@ -40,18 +40,6 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            {/* New Tag */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-blue-900/30 text-blue-200 px-4 py-1.5 rounded-full mb-8 border border-blue-500/30 shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-blue-900/40"
-            >
-              <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
-              <span className="text-sm font-medium">Expert Full-Stack Developer</span>
-              <ArrowRight size={14} />
-            </motion.div>
-
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

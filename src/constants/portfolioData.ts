@@ -182,7 +182,7 @@ export const contactInfo = [
   {
     icon: "Phone",
     title: "Phone",
-    value: "+1467953754592"
+    value: "14375550199"
   },
   {
     icon: "Mail",
