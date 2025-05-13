@@ -1,5 +1,5 @@
 export const personalData = {
-    name: "Knox Ryder",
+    name: "Azlan Yusof",
     mail: "sanderberg786@gmail.com",
     location: "Burnaby, British Columbia",
     education: [
